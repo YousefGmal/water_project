@@ -29,3 +29,23 @@ export const getInvoices = async (
     res.status(500).json(error);
   }
 };
+
+export const collectInvoices = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { id } = req.params;
+    const result = await Invoice.findOneAndUpdate(
+      { _id: id },
+      { isCollected: true },
+      { new: true }
+    );
+    res.status(200).json({ data: result });
+
+    // res.json(result.rows);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
