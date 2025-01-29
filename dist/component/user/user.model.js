@@ -75,6 +75,7 @@ exports.Employee = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 const EmployeeSchema = new mongoose_1.Schema({
     name: { type: String, required: true },
+    invoices: [{ type: mongoose_1.Schema.Types.ObjectId, ref: 'Invoice' }],
     invoicesNumber: { type: Number, required: true, default: 0 },
     totalCollections: { type: Number, required: true, default: 0 },
     cash: { type: Number, required: true, default: 0 },

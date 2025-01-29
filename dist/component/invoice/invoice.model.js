@@ -37,6 +37,12 @@ exports.Invoice = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 const InvoiceSchema = new mongoose_1.Schema({
     employeeName: { type: String, required: true },
+    consumerName: { type: String, required: true },
+    address: { type: String, required: true },
+    isCollected: { type: Boolean, required: true, default: false },
+    paymentMethod: { type: String, required: true, default: "cash" },
+    collectedAt: { type: Date },
+    subscriptionNum: { type: Number, required: true },
     invNum: { type: Number, required: true, default: 0 },
     price: { type: Number, required: true, default: 0 },
 }, { timestamps: true });

@@ -9,12 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getInvoices = exports.addInvoice = void 0;
+exports.collectInvoices = exports.getInvoices = exports.addInvoice = void 0;
 const invoice_model_1 = require("./invoice.model");
 const addInvoice = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const user = yield invoice_model_1.Invoice.create(req.body);
-        res.status(201).json("Invoice is created successfully");
+        res.status(201).json({ data: user });
     }
     catch (error) {
         res.status(500).json(error);
@@ -32,3 +32,15 @@ const getInvoices = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
     }
 });
 exports.getInvoices = getInvoices;
+const collectInvoices = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        const result = yield invoice_model_1.Invoice.findOneAndUpdate({ _id: id }, { isCollected: true }, { new: true });
+        res.status(200).json({ data: result });
+        // res.json(result.rows);
+    }
+    catch (error) {
+        res.status(500).json(error);
+    }
+});
+exports.collectInvoices = collectInvoices;

@@ -8,3 +8,4 @@ const router = (0, express_1.Router)();
 exports.invoiceRouter = router;
 router.post('/', invoice_controller_1.addInvoice);
 router.get('/', invoice_controller_1.getInvoices);
+router.patch('/:id', invoice_controller_1.collectInvoices);
