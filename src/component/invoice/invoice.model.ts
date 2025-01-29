@@ -20,7 +20,7 @@ const InvoiceSchema = new Schema<IInvoice>(
     consumerName: { type: String, required: true },
     address: { type: String, required: true },
     isCollected: { type: Boolean, required: true, default: false },
-    paymentMethod: { type: String, required: true, default: "cash" },
+    paymentMethod: { type: String, required: true, default: "not collected" },
     collectedAt: { type: Date },
     subscriptionNum: { type: Number, required: true },
     invNum: { type: Number, required: true, default: 0 },
