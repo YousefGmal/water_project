@@ -9,7 +9,7 @@ export const addInvoice = async (
   try {
     const user = await Invoice.create(req.body);
 
-    res.status(201).json("Invoice is created successfully");
+    res.status(201).json({data: user});
   } catch (error) {
     res.status(500).json(error);
   }
